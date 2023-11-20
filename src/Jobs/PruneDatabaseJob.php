@@ -19,7 +19,7 @@ class PruneDatabaseJob implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(protected PruningConfig $config)
+    public function __construct(protected readonly PruningConfig $config)
     {
     }
 
@@ -59,10 +59,11 @@ class PruneDatabaseJob implements ShouldQueue
     protected function sendAfterPruningEvents(): void
     {
         collect($this->config->afterPruningEvents)
+            ->merge(config('prune-database.after-pruning-events', []))
             ->map(function (string $event) {
-               if (class_exists($event)) {
-                   event($event, ['total_deleted' => $this->config->totalRowsDeleted]);
-               }
+                if (class_exists($event)) {
+                    event($event, ['totalDeleted' => $this->config->totalRowsDeleted]);
+                }
             });
     }
 

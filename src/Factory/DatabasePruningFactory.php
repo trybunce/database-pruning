@@ -1,6 +1,6 @@
 <?php
 
-namespace Bunce\PruneDatabase\Concerns;
+namespace Bunce\PruneDatabase\Factory;
 
 use Bunce\PruneDatabase\Jobs\PruneDatabaseJob;
 use Bunce\PruneDatabase\ValueObjects\PruningConfig;
