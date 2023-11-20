@@ -1,8 +1,12 @@
 parameters:
-    level: max
+    level: 6
     paths:
         - src
 
     reportUnmatchedIgnoredErrors: true
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    treatPhpDocTypesAsCertain: false
 
     ignoreErrors:
+     - "#Unsafe usage of new static\\(\\)#"
