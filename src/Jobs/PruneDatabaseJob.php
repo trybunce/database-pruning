@@ -30,9 +30,9 @@ class PruneDatabaseJob implements ShouldQueue
      */
     public function __invoke(): void
     {
-        if ($this->batch()->cancelled() || ! $this->config->lock()->get()) {
-            return;
-        }
+        // if ($this->batch()->cancelled() || ! $this->config->lock()->get()) {
+        //     return;
+        // }
 
         $rowsDeleted = $this->prune();
 
